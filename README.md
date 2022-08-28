@@ -1,6 +1,8 @@
 # MC-NPC
 Monte-Carlo Nuclear Pore Complex Simulation.
 
+This code is implemented in a few functions, where the relationships between the different functions are shown in the pseudocode below. `GenerateLabelSites` and `GenerateFluorophoreSites` are implemented concurrently in the actual MATLAB code to capitalize on MATLAB's vectorization capabilities. Run `generateNPCs` for an example of the code.
+
 # Pseudocode
 ```
 OBTAIN Nup species and membrane size

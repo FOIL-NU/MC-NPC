@@ -25,4 +25,4 @@ PRINT absolute fluorophore x,y-coordinates of single-molecule localizations for 
 Distributed under the GNU General Public License v3.0. See `LICENSE.txt` for more information.
 
 # Contact
-Written by Wei Hong Yeo, Functional Optical Imaging Laboratory, Northwestern University, 2022.
+Written by Wei Hong Yeo, [Functional Optical Imaging Laboratory](http://foil.northwestern.edu/), Northwestern University, 2022.

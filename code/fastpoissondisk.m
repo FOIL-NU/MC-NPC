@@ -1,9 +1,5 @@
 function x = fastpoissondisk(domain_width,min_separation,n_points)
 % Fast Poisson Disk Sampling method from Bridson, 2007
-%
-%
-% Written by Weihong Yeo, Northwestern University, 2022-08-19.
-%
 
 grid_size = min_separation / sqrt(2);
 if nargin < 3 || isempty(n_points)

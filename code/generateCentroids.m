@@ -7,7 +7,6 @@ function npc_centroids = generateCentroids(membrane_width,n_npc,min_separation,k
 % - 3: x, y, z
 % - n_npc: number of NPCs
 %
-%
 % Created by Weihong Yeo, Northwestern University, 2022-07-29.
 % Last modified by Weihong Yeo, Northwestern University, 2022-08-19.
 % 

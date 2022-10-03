@@ -3,8 +3,6 @@ function tbl = generateNPCs(nup_species,membrane_width,npc_density,bg_density,vi
 % 
 % membrane_size is real-valued specifying a width in nm.
 % npc_density is an integer from 1 to 9 NPCs/um2.
-% bg_density is an integer that specifies the background noise.
-%
 %
 % Created by Weihong Yeo, Northwestern University, 2022-08-19.
 %
@@ -14,13 +12,13 @@ if nargin < 1
     nup_species = "nup133";
 end
 if nargin < 2
-    membrane_width = 1000;
+    membrane_width = 10000;
 end
 if nargin < 3
-    npc_density = 3;
+    npc_density = 9;
 end
 if nargin < 4
-    bg_density = 0;
+    bg_density = 10;
 end
 if nargin < 5
     visualize_data = true;
@@ -57,6 +55,7 @@ if bg_density > 0
 end
 
 tbl = array2table(output,'VariableNames',{'x [nm]','y [nm]','frame','npc_site','npc_index'});
+writetable(tbl,filename);
 
 if visualize_data
     visualize(tbl,nup_species,membrane_width,centroids,centroids+label_sites);

@@ -1,20 +1,19 @@
-function bg_data = generateBackground(n_bg,membrane_width)
-% provide n_bg in terms of number of photons per um2.
-% This function generates the background based on a given background density.
+function bg_data = generateBackground(bg_density,membrane_width)
+% This function provides n_bg in terms of number of photons per um2.
 %
-%
-% Created by Weihong Yeo, Northwestern University, 2022-08-19.
-%
-
-if nargin < 1
-    ng_density = 40;
-end
+% Created by Weihong Yeo, Northwestern University, 2022-07-29.
+% Last modified by Weihong Yeo, Northwestern University, 2022-10-02.
+% 
+% # Changelog
+% ## 2022-10-02
+% - corrected n_bg formula
+% 
 
 if nargin < 2
     membrane_width = 1000;
 end
 
-n_bg = round(bg_density * (membrane_width / 1000));
+n_bg = round(bg_density * (membrane_width / 1000)^2);
 bg_data = rand(n_bg,2)*membrane_width;
 
 end

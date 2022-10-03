@@ -9,7 +9,6 @@ function nup_parameters = getNupParameters(nup_species)
 % Here, we assume that each nuclear pore complex can only be in one location,
 % either outer, inner, transmembrane, or nuclear.
 %
-%
 % Created by Weihong Yeo, Northwestern University, 2022-07-29.
 % Last modified by Weihong Yeo, Northwestern University, 2022-08-19.
 % 
@@ -18,8 +17,8 @@ function nup_parameters = getNupParameters(nup_species)
 % - included more NUPs in the database
 % - added default values for prob_label and avg_sml.
 
-%% Store a list of known NUPs at the associated binding sites
-nup_index = ["fgrepeats","nup93","nup133","nup210"];
+% Store a list of known NUPs at the associated binding sites
+nup_index = ["nup93","nup133","nup210"];
 location_names = ["outer","inner","transmembrane","nuclear"];
 
 %% Check input is within the list
@@ -27,14 +26,12 @@ assert(any(strcmpi(nup_index,nup_species)==1));
 
 %% Simulation parameters
 locations_index = [ % outer, inner, transmembrane, nuclear
-      2, ... % fgrepeats
       2, ... % nup93
       1, ... % nup133
       3  ... % nup210
     ];
 
 radial_distances = [ % nm, radial distance relative to centroid
-      10.0, ... % fgrepeats
       40.0, ... % nup93
       53.5, ... % nup133
       80.0  ... % nup210

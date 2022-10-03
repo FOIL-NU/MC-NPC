@@ -1,9 +1,4 @@
 function visualize(tbl,target_site,membrane_width,npc_centroids,npc_site)
-% This function visualizes the generated nuclear membrane surface.
-%
-%
-% Created by Weihong Yeo, Northwestern University, 2022-08-19.
-%
 
 npc_list = unique(tbl{:,'npc_index'});
 
@@ -47,7 +42,12 @@ if nargin > 4
 end
 
 subplot(1,2,2);
-img = ash2(tbl{:,'x [nm]'},tbl{:,'y [nm]'},10,[0,membrane_width],[0,membrane_width])';
+if exist('ash2','file') == 2
+    img = ash2(tbl{:,'x [nm]'},tbl{:,'y [nm]'},10,[0,membrane_width],[0,membrane_width])';
+else
+    img = histcounts2(tbl{:,'x [nm]'},tbl{:,'y [nm]'},[0,membrane_width],[0,membrane_width],'binwidth',10)';
+end
+
 imshow(img,[]);
 set(gca,'YDir','normal');
 

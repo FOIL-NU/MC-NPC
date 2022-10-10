@@ -1,6 +1,7 @@
 function bg_data = generateBackground(bg_density,membrane_width)
 % This function provides n_bg in terms of number of photons per um2.
 %
+%
 % Created by Weihong Yeo, Northwestern University, 2022-07-29.
 % Last modified by Weihong Yeo, Northwestern University, 2022-10-02.
 % 

@@ -3,6 +3,8 @@ function tbl = generateNPCs(nup_species,membrane_width,npc_density,bg_density,vi
 % 
 % membrane_size is real-valued specifying a width in nm.
 % npc_density is an integer from 1 to 9 NPCs/um2.
+% bg_density is an integer that specifies the background noise.
+%
 %
 % Created by Weihong Yeo, Northwestern University, 2022-08-19.
 %

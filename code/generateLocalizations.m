@@ -2,7 +2,7 @@ function localizations = generateLocalizations(nup_param,loc_uncertainty)
 % This function generates localizations based on the expected number of
 % blinks given by nup_params.
 % 
-% We assume a localization uncertainty of 10 nm by default.
+% We assume a normally distributed localization uncertainty of 15 nm by default.
 %
 % Created by Weihong Yeo, Northwestern University, 2022-08-19.
 %
@@ -15,9 +15,9 @@ else
     n_blinks = round(nbinrnd(r,exp(-0.5)));
 end
 if nargin < 2
-    loc_uncertainty = 15;
+    loc_uncertainty = 15+2*randn(2,n_blinks);
 end
 
-localizations = [randn(2,n_blinks)*loc_uncertainty; zeros(1,n_blinks)];
+localizations = [randn(2,n_blinks).*loc_uncertainty; zeros(1,n_blinks)];
 
 end

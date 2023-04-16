@@ -1,0 +1,4 @@
+Nup_species,Location_name,Minor_angle,Radial_distance,Probability_label,Average_SML
+Nup93,outer,90.0,40.0,0.6,10
+Nup133,inner,0.0,53.5,0.6,10
+Nup210,transmembrane,-90.0,80.0,0.6,10

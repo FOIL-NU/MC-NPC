@@ -6,41 +6,52 @@ function nup_parameters = getNupParameters(nup_species)
 % site, probability of labeling onto each site, and average single molecule
 % localization.
 %
-% Here, we assume that each nuclear pore complex can only be in one location,
-% either outer, inner, transmembrane, or nuclear.
+% Input:
+%   nup_species: string, name of the NUP protein.
 %
-% Created by Weihong Yeo, Northwestern University, 2022-07-29.
-% Last modified by Weihong Yeo, Northwestern University, 2022-08-19.
+% Output:
+%   nup_parameters: struct, containing the parameters of the NUP protein.
+%       nup_parameters.location_name: string, name of the location of the
+%           NUP protein.
+%       nup_parameters.minor_angle: scalar, minor angle of the site
+%           relative to the inner torus curvature of the NPC.
+%       nup_parameters.radial_dist: 1D array, radial distances of each
+%           labeling site.
+%       nup_parameters.prob_label: 1D array, probability of labeling onto
+%           each site.
+%       nup_parameters.avg_sml: scalar, average single molecule
+%           localization.
+%
 % 
-% # Changelog
-% ## 2022-08-19
-% - included more NUPs in the database
-% - added default values for prob_label and avg_sml.
+% Created by Weihong Yeo, Northwestern University, 2022-07-29.
+% Last modified by Weihong Yeo, Northwestern University, 2023-04-15.
+% 
+% ######################################################################### 
+% Changelog
+% ######################################################################### 
+% 2023-04-15: added the minor angle parameter to the csv file.
+%
+% 2023-04-09: changed code to read a csv file instead of hardcoding the
+% parameters.
+%
+% 2022-08-19: included more NUPs in the database, and added default values
+% for prob_label and avg_sml.
+% 
+% 2022-07-29: created.
+%
 
-% Store a list of known NUPs at the associated binding sites
-nup_index = ["nup93","nup133","nup210"];
-location_names = ["outer","inner","transmembrane","nuclear"];
+% Load data from CSV file
+data = readtable('nup_parameters.csv');
 
-%% Check input is within the list
-assert(any(strcmpi(nup_index,nup_species)==1));
+% Find the row corresponding to the input nup_species
+nup_idx = find(strcmpi(data.Nup_species, nup_species), 1);
+assert(~isempty(nup_idx), 'Invalid Nup species: %s', nup_species);
 
-%% Simulation parameters
-locations_index = [ % outer, inner, transmembrane, nuclear
-      2, ... % nup93
-      1, ... % nup133
-      3  ... % nup210
-    ];
-
-radial_distances = [ % nm, radial distance relative to centroid
-      40.0, ... % nup93
-      53.5, ... % nup133
-      80.0  ... % nup210
-    ];
-
-nup_parameters.location_index = locations_index(strcmpi(nup_index,nup_species));
-nup_parameters.location_name = location_names(nup_parameters.location_index);
-nup_parameters.radial_dist = radial_distances(strcmpi(nup_index,nup_species));
-nup_parameters.prob_label = 0.6;
-nup_parameters.avg_sml = 10;
+% Extract parameters from row
+nup_parameters.location_name = data.Location_name{nup_idx};
+nup_parameters.minor_angle = data.Minor_angle(nup_idx);
+nup_parameters.radial_dist = data.Radial_distance(nup_idx);
+nup_parameters.prob_label = data.Probability_label(nup_idx);
+nup_parameters.avg_sml = data.Average_SML(nup_idx);
 
 end

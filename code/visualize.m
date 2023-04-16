@@ -1,4 +1,27 @@
 function visualize(tbl,target_site,membrane_width,npc_centroids,npc_site)
+% This function visualizes the NPC positions in a 2D plot and a 2D histogram.
+%
+% Inputs:
+%   tbl: table containing the NPC positions
+%   target_site: name of the target site
+%   membrane_width: width of the membrane
+%   npc_centroids: centroids of the NPC clusters
+%   npc_site: positions of the NPC sites
+%
+% Outputs:
+%   none
+%
+%
+% Created by Weihong Yeo, Northwestern University, 2022-07-29
+% Last modified by Weihong Yeo, Northwestern University, 2023-04-15
+%
+% ############################################################################
+% Changelog
+% ############################################################################
+% 2023-04-15: Added docstrings
+%
+% 2022-07-29: Created
+%
 
 npc_list = unique(tbl{:,'npc_index'});
 
